@@ -1,12 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './header.css';
 export const Header = () => {
   return (
     <header>
       <h1>Calculator App</h1>
       <ul className="header-list">
-        <li>Home</li>
-        <li>Settings</li>
+        <li>
+          <Link className="text-link" to="/">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link className="text-link" to="/settings/">
+            Settings
+          </Link>
+        </li>
       </ul>
     </header>
   );

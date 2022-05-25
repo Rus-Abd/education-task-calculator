@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Calculator } from './components/Calculator/Calculator';
+
 import { Header } from './components/Header/Header';
 import Settings from './screens/Settings/Settings';
+import Home from './screens/Home/Home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,8 +13,8 @@ root.render(
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" exact component={Calculator} />
-        <Route path="/settings/" component={Settings} />
+        <Route path="/" exact element={<Home />} />
+        <Route path="/settings/" element={<Settings />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

@@ -6,17 +6,27 @@ header {
   align-items: center;
   background-color: #434343;
   color: #ffffff;
-  letter-spacing: 0px;
 }
 header h1 {
   margin-left: 32px;
-  font: normal normal normal 32px/38px Helvetica Neue;
+  font-size: 32px;
 }
 header ul {
   list-style: none;
   display: flex;
-  font: normal normal normal 32px/38px Helvetica Neue;
 }
 .header-list li {
   margin-right: 32px;
+  opacity: 0.7;
+  transition: 0.7s all;
+}
+.header-list li:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+}
+.text-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: 32px;
 }

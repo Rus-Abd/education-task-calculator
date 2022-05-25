@@ -1,0 +1,16 @@
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-row-gap: 45px;
+  grid-column-gap: 128px;
+}
+.button {
+  width: 150px;
+  height: 150px;
+  background: #f2f2f2 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 32px;
+  font-size: 64px;
+  letter-spacing: 0px;
+  color: #000000;
+}
