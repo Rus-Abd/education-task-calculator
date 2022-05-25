@@ -1,0 +1,24 @@
+.history {
+  margin-left: 23px;
+  margin-top: 23px;
+  display: flex;
+}
+.history-line {
+  width: 2px;
+  height: 910px;
+  background-color: #707070;
+}
+.history-log span {
+  font-size: 32px;
+  margin-left: 160px;
+  margin-bottom: 50px;
+}
+.history-log-values {
+  margin-left: 53px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.history-log-values li {
+  margin-bottom: 20px;
+}

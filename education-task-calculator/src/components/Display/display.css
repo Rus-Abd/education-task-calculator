@@ -1,0 +1,18 @@
+.display {
+  margin-left: 42px;
+  margin-top: 56px;
+}
+.display-value {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 64px;
+  padding-right: 47px;
+}
+.display-line {
+  width: 100%;
+  height: 2px;
+  background-color: #707070;
+}
+@media screen and (max-width: 1900px) {
+}
