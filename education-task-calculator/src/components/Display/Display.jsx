@@ -1,9 +1,9 @@
 import React from 'react';
 import './display.css';
-const Display = () => {
+const Display = ({ displayVal }) => {
   return (
     <div className="display">
-      <span className="display-value">223233333333333</span>
+      <span className="display-value">{displayVal}</span>
       <div className="display-line"></div>
     </div>
   );
