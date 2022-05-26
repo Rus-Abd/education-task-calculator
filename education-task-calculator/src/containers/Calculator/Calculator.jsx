@@ -8,13 +8,18 @@ export const displayContext = React.createContext();
 
 export const Calculator = () => {
   const [displayVal, setDisplayVal] = useState('');
+  const [history, setHistory] = useState([]);
   return (
     <main className="container">
       <div className="container-calculations">
         <Display displayVal={displayVal} />
-        <Keypad setDisplayVal={setDisplayVal} />
+        <Keypad
+          setDisplayVal={setDisplayVal}
+          setHistory={setHistory}
+          history={history}
+        />
       </div>
-      <History />
+      <History history={history} />
     </main>
   );
 };

@@ -1,21 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { calculate } from '../../utils/calculate';
 import './keypad.css';
-export const Keypad = ({ setDisplayVal }) => {
+export const Keypad = ({ setDisplayVal, setHistory, history }) => {
   const [stack, setStack] = useState([]);
   const handleClick = (e) => {
     const value = e.target.innerHTML;
+    if (value === '=') {
+      //   console.log(calculate(stack.join('')));
+      try {
+        setDisplayVal(calculate(stack.join('')));
+      } catch (error) {
+        console.log(error);
+      }
 
-    if (value !== '=' && value !== 'C' && value !== 'CE') {
+      setHistory(history.concat(stack.join('')));
+    } else if (value === 'CE') {
+      setStack(
+        stack.filter((el, index) => {
+          return index !== stack.length - 1;
+        }),
+      );
+    } else if (value === 'C') {
+      setStack(
+        stack.filter((el, index) => {
+          return index === stack.length;
+        }),
+      );
+      setDisplayVal(stack.join(''));
+    } else if (e.target.tagName === 'BUTTON') {
       setStack(stack.concat(value));
       setDisplayVal(stack.join(''));
-    } else if (value === '=') {
-      console.log(calculate(stack.join('')));
-      setDisplayVal(calculate(stack.join('')));
     }
-
-    // console.log(e.target.innerHTML);
-    // console.log(stack);
   };
   useEffect(() => {
     setDisplayVal(stack.join(''));
