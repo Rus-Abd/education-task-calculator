@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { calculate } from '../../utils/calculate';
+import { setToLS } from '../../utils/storage';
 import './keypad.css';
 export const Keypad = ({ setDisplayVal, setHistory, history }) => {
   const [stack, setStack] = useState([]);
   const handleClick = (e) => {
     const value = e.target.innerHTML;
     if (value === '=') {
-      //   console.log(calculate(stack.join('')));
       try {
         setDisplayVal(calculate(stack.join('')));
+        setHistory(history.concat(stack.join('')));
+        setToLS('history', history);
       } catch (error) {
         console.log(error);
       }
-
-      setHistory(history.concat(stack.join('')));
     } else if (value === 'CE') {
       setStack(
         stack.filter((el, index) => {
@@ -34,7 +34,13 @@ export const Keypad = ({ setDisplayVal, setHistory, history }) => {
   };
   useEffect(() => {
     setDisplayVal(stack.join(''));
-  }, [setDisplayVal, stack]);
+    setToLS('history', history);
+  }, [history, setDisplayVal, stack]);
+  useEffect(() => {
+    return () => {
+      setToLS('history', history);
+    };
+  });
   return (
     <div className="keypad" onClick={(e) => handleClick(e)}>
       <button className="button">C</button>

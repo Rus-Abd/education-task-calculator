@@ -1,0 +1,19 @@
+{
+  "themes": {
+    "light": {
+      "background": "#FFFFFF",
+      "header-background": "#434343",
+      "body-text": "#000000",
+      "header-text": "#FFFFFF",
+      "border": "#707070"
+    },
+    "dark": {
+      "background": "#171010",
+      "header-background": "#362222",
+      "body-text": "#FFFFFF",
+      "header-text": "#423F3E",
+      "border": "#2B2B2B"
+    },
+    "colored": {}
+  }
+}

@@ -11,14 +11,15 @@
 .history-log span {
   font-size: 32px;
   margin-left: 160px;
-  margin-bottom: 50px;
 }
 .history-log-values {
   margin-left: 53px;
+  margin-top: 50px;
   list-style: none;
   display: flex;
   flex-direction: column;
 }
 .history-log-values li {
   margin-bottom: 20px;
+  font-size: 32px;
 }

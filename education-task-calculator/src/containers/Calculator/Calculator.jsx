@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import Display from '../../components/Display/Display';
 import { History } from '../../components/History/History';
 import { Keypad } from '../../components/Keypad/Keypad';
+import { getFromLS } from '../../utils/storage';
 import './calculator.css';
 
 export const displayContext = React.createContext();
 
 export const Calculator = () => {
   const [displayVal, setDisplayVal] = useState('');
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState(getFromLS('history') || []);
   return (
     <main className="container">
       <div className="container-calculations">
