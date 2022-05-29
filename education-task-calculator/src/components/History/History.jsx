@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import './history.css';
 const HistoryLine = styled.div`
   width: 2px;
@@ -23,4 +24,7 @@ export const History = ({ history }) => {
       </div>
     </div>
   );
+};
+History.propTypes = {
+  history: PropTypes.string,
 };

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { calculate } from '../../utils/calculate';
 import { setToLS } from '../../utils/storage';
 import './keypad.css';
@@ -128,4 +129,10 @@ export const KeyPad = ({ setDisplayVal, setHistory, history }) => {
       </Button>
     </div>
   );
+};
+
+KeyPad.propTypes = {
+  setDisplayVal: PropTypes.func,
+  setHistory: PropTypes.func,
+  history: PropTypes.array,
 };

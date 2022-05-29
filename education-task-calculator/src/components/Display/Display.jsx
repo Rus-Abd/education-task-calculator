@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import './display.css';
 const DisplayLine = styled.div`
   width: 100%;
@@ -16,3 +17,7 @@ const Display = ({ displayVal }) => {
 };
 
 export default Display;
+
+Display.propTypes = {
+  displayVal: PropTypes.string,
+};

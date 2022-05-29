@@ -12,9 +12,9 @@ export default class Settings extends Component {
         <div className="settings-theme">
           <label htmlFor="">Switch Theme</label>
           <select name="" id="">
-            <option value="dog">Light Theme</option>
-            <option value="cat">Dark Theme</option>
-            <option value="hamster">Colored Theme</option>
+            <option value="light">Light Theme</option>
+            <option value="dark">Dark Theme</option>
+            <option value="colored">Colored Theme</option>
           </select>
         </div>
 
