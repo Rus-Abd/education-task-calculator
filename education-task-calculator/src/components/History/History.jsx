@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
-
+import styled from 'styled-components';
 import './history.css';
+const HistoryLine = styled.div`
+  width: 2px;
+  height: 910px;
+  background-color: ${(props) => props.theme.background || 'black'};
+`;
 export const History = ({ history }) => {
   useEffect(() => {});
   return (
     <div className="history">
-      <div className="history-line"></div>
+      <HistoryLine></HistoryLine>
       <div className="history-log">
         <span>History</span>
         <ul className="history-log-values">

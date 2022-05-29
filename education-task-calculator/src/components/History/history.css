@@ -3,11 +3,7 @@
   margin-top: 23px;
   display: flex;
 }
-.history-line {
-  width: 2px;
-  height: 910px;
-  background-color: #707070;
-}
+
 .history-log span {
   font-size: 32px;
   margin-left: 160px;
