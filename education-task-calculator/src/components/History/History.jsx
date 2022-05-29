@@ -26,5 +26,5 @@ export const History = ({ history }) => {
   );
 };
 History.propTypes = {
-  history: PropTypes.string,
+  history: PropTypes.array,
 };
