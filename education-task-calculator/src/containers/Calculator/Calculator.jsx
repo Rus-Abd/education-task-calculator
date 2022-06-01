@@ -22,3 +22,44 @@ export const Calculator = () => {
     </main>
   );
 };
+// import React, { useState, useEffect, useCallback } from 'react';
+// import sendMetric from 'metrics';
+// import sendData from 'data';
+// import bigComputations from 'utils';
+
+// const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
+
+// const PleaseReviewMe = ({ argument }) => {
+//   const [data] = useState(() => bigComputations(argument));
+
+//   const handleSendMetric = () => {
+//     sendMetric('click');
+//   };
+
+//   useEffect(() => {
+//     document.addEventListener('click', handleSendMetric);
+
+//     return () => {
+//       document.removeEventListener('click', handleSendMetric);
+//     };
+//   });
+
+//   const click = useCallback(
+//     (id) => {
+//       sendData(data, id);
+//     },
+//     [data],
+//   );
+
+//   return (
+//     <>
+//       {items.map(({ id }) => (
+//         <div key={id} onClick={() => click(id)}>
+//           {id}
+//         </div>
+//       ))}
+//     </>
+//   );
+// };
+
+// export default PleaseReviewMe;

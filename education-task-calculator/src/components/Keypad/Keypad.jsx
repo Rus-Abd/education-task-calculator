@@ -9,7 +9,7 @@ import themeContext from '../../utils/themeContext';
 const Button = styled.button`
   width: 150px;
   height: 150px;
-  background: ${(theme) => theme.color} 0% 0% no-repeat padding-box;
+  background: ${(theme) => theme.backGround} 0% 0% no-repeat padding-box;
   border: 1px solid #707070;
   border-radius: 32px;
   font-size: 64px;
@@ -26,6 +26,7 @@ const Button = styled.button`
 export const KeyPad = ({ setDisplayVal, setHistory, history }) => {
   const { theme } = useContext(themeContext);
   console.log(theme);
+  console.log(theme.border);
   const [stack, setStack] = useState([]);
   const handleClick = (e) => {
     const value = e.target.innerHTML;
@@ -67,64 +68,124 @@ export const KeyPad = ({ setDisplayVal, setHistory, history }) => {
 
   return (
     <div className="keypad" onClick={(e) => handleClick(e)}>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         C
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         7
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         8
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         9
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         *
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         -
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         4
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         5
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         6
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         /
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         +
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         1
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         2
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         3
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         =
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         .
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         (
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         0
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         )
       </Button>
-      <Button className="button" color={theme}>
+      <Button
+        className="button"
+        color={theme.bodyText}
+        backGround={theme.background}>
         CE
       </Button>
     </div>

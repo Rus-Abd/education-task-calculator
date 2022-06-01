@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import themeContext from '../../utils/themeContext';
 import './header.css';
 const SHeader = styled.header`
   width: 100%;
@@ -8,12 +9,13 @@ const SHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #434343;
-  color: #ffffff;
+  background-color: ${(theme) => theme.backGround};
+  color: ${(theme) => theme.color};
 `;
 export const Header = () => {
+  const { theme } = useContext(themeContext);
   return (
-    <SHeader>
+    <SHeader backGround={theme.headerBackground} color={theme.headerText}>
       <h1>Calculator App</h1>
       <ul className="header-list">
         <li>

@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import themeContext from '../../utils/themeContext';
 import './display.css';
 const DisplayLine = styled.div`
   width: 100%;
   height: 2px;
-  background-color: ${(props) => props.theme.background};
+  background-color: ${(theme) => theme.color};
 `;
 const Display = ({ displayVal }) => {
+  const { theme } = useContext(themeContext);
   return (
     <div className="display">
       <span className="display-value">{displayVal}</span>
-      <DisplayLine></DisplayLine>
+      <DisplayLine color={theme.border}></DisplayLine>
     </div>
   );
 };

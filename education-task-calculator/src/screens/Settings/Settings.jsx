@@ -1,7 +1,20 @@
-import React, { Component } from 'react';
-import { setToLS } from '../../utils/storage';
+import React, { Component, useState } from 'react';
+import { getFromLS, setToLS } from '../../utils/storage';
+import themeContext from '../../utils/themeContext';
 import './settings.css';
 export default class Settings extends Component {
+  static contextType = themeContext;
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: getFromLS('theme') || 'light',
+    };
+  }
+  handleSelect(e) {
+    setToLS('theme', e.target.value);
+    this.setState({ value: e.target.value });
+    this.context.switchTheme(e.target.value);
+  }
   eraseHistory() {
     setToLS('history', '');
   }
@@ -10,8 +23,11 @@ export default class Settings extends Component {
       <div className="settings">
         <h2>Settings</h2>
         <div className="settings-theme">
-          <label htmlFor="">Switch Theme</label>
-          <select name="" id="">
+          <label>Switch Theme</label>
+          <select
+            id="theme"
+            onChange={(e) => this.handleSelect(e)}
+            value={this.state.value}>
             <option value="light">Light Theme</option>
             <option value="dark">Dark Theme</option>
             <option value="colored">Colored Theme</option>

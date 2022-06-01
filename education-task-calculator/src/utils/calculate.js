@@ -65,3 +65,17 @@ export function calculate(eq, callback) {
     return result;
   }
 }
+// export default class calculator {
+//   constructor() {
+//     this.value = 0;
+//   }
+//   add(num) {
+//     this.value += num;
+//   }
+//   subtract(num) {
+//     this.value -= num;
+//   }
+//   multiply(num) {
+//     this.value *= num;
+//   }
+// }
