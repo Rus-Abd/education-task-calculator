@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getFromLS, setToLS } from '../../utils/storage';
-import themeContext, { themes } from '../../utils/themeContext';
+import themeContext from '../../utils/themeContext';
+import { themes } from '../../constants/themes';
 import './settings.css';
 export default class Settings extends Component {
   static contextType = themeContext;
