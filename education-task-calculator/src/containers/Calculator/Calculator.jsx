@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import themeContext from '../../utils/themeContext';
 import Display from '../../components/Display/Display';
 import { History } from '../../components/History/History';

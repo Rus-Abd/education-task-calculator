@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import themeContext from '../../utils/themeContext';
+
 import './display.css';
 const DisplayLine = styled.div`
   width: 100%;
