@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { calculate } from '../../utils/calculate';
 import { setToLS } from '../../utils/storage';
 import './keypad.css';
 import styled from 'styled-components';
-import themeContext from '../../utils/themeContext';
 
 const Button = styled.button`
   width: 150px;
@@ -23,10 +22,7 @@ const Button = styled.button`
   }
 `;
 
-export const KeyPad = ({ setDisplayVal, setHistory, history }) => {
-  const { theme } = useContext(themeContext);
-  console.log(theme);
-  console.log(theme.border);
+export const KeyPad = ({ setDisplayVal, setHistory, history, theme }) => {
   const [stack, setStack] = useState([]);
   const handleClick = (e) => {
     const value = e.target.innerHTML;
@@ -34,10 +30,7 @@ export const KeyPad = ({ setDisplayVal, setHistory, history }) => {
       try {
         setDisplayVal(calculate(stack.join('')));
         setHistory(history.concat(stack.join('')));
-        setToLS('history', history);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     } else if (value === 'CE') {
       setStack(
         stack.filter((el, index) => {
@@ -46,8 +39,8 @@ export const KeyPad = ({ setDisplayVal, setHistory, history }) => {
       );
     } else if (value === 'C') {
       setStack(
-        stack.filter((el, index) => {
-          return index === stack.length;
+        stack.filter((el) => {
+          return false;
         }),
       );
       setDisplayVal(stack.join(''));
@@ -58,8 +51,7 @@ export const KeyPad = ({ setDisplayVal, setHistory, history }) => {
   };
   useEffect(() => {
     setDisplayVal(stack.join(''));
-    setToLS('history', history);
-  }, [history, setDisplayVal, stack]);
+  }, [setDisplayVal, stack]);
   useEffect(() => {
     return () => {
       setToLS('history', history);

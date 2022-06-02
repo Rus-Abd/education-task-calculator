@@ -15,7 +15,14 @@ export const themes = {
     headerText: '#423F3E',
     border: '#2B2B2B',
   },
-  colored: {},
+  colored: {
+    headerBackground:
+      'radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% )',
+    headerText: '#ef3550',
+    background:
+      'radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% )',
+    bodyText: '#ef3550',
+  },
 };
 const themeContext = createContext();
 export const ThemeProvider = ({ children }) => {

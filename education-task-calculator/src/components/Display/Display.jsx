@@ -8,8 +8,7 @@ const DisplayLine = styled.div`
   height: 2px;
   background-color: ${(theme) => theme.color};
 `;
-const Display = ({ displayVal }) => {
-  const { theme } = useContext(themeContext);
+const Display = ({ displayVal, theme }) => {
   return (
     <div className="display">
       <span className="display-value">{displayVal}</span>
@@ -21,5 +20,5 @@ const Display = ({ displayVal }) => {
 export default Display;
 
 Display.propTypes = {
-  displayVal: PropTypes.string,
+  displayVal: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };

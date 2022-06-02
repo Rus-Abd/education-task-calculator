@@ -1,6 +1,6 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { getFromLS, setToLS } from '../../utils/storage';
-import themeContext from '../../utils/themeContext';
+import themeContext, { themes } from '../../utils/themeContext';
 import './settings.css';
 export default class Settings extends Component {
   static contextType = themeContext;
@@ -13,7 +13,7 @@ export default class Settings extends Component {
   handleSelect(e) {
     setToLS('theme', e.target.value);
     this.setState({ value: e.target.value });
-    this.context.switchTheme(e.target.value);
+    this.context.switchTheme(themes[e.target.value]);
   }
   eraseHistory() {
     setToLS('history', '');

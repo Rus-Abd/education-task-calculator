@@ -9,7 +9,7 @@ const SHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${(theme) => theme.backGround};
+  background: ${(theme) => theme.backGround};
   color: ${(theme) => theme.color};
 `;
 export const Header = () => {

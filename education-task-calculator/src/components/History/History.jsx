@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import './history.css';
@@ -8,7 +8,6 @@ const HistoryLine = styled.div`
   background-color: ${(props) => props.theme.background || 'black'};
 `;
 export const History = ({ history }) => {
-  useEffect(() => {});
   return (
     <div className="history">
       <HistoryLine></HistoryLine>
