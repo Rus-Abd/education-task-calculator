@@ -3,7 +3,9 @@ import { getFromLS } from './storage';
 import { themes } from '../constants/themes';
 const themeContext = createContext();
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(themes[getFromLS('theme') || 'light']);
+  const [theme, setTheme] = useState(
+    themes[`${getFromLS('theme').length > 0 ? getFromLS('theme') : 'light'}`],
+  );
   const switchTheme = (theme) => setTheme(theme);
   return (
     <themeContext.Provider value={{ theme, switchTheme }}>
