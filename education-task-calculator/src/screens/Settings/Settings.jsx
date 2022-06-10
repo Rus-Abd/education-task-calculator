@@ -2,24 +2,29 @@ import React, { Component } from 'react';
 import { getFromLS, setToLS } from '../../utils/storage';
 import themeContext from '../../utils/themeContext';
 
-import { themes } from '../../constants/themes';
+import themes from '../../constants/themes';
 import './settings.css';
+
 export default class Settings extends Component {
   static contextType = themeContext;
+
   constructor(props) {
     super(props);
     this.state = {
       value: getFromLS('theme') || 'light',
     };
   }
+
   handleSelect(e) {
     setToLS('theme', e.target.value);
     this.setState({ value: e.target.value });
     this.context.switchTheme(themes[e.target.value]);
   }
+
   eraseHistory() {
     setToLS('history', '');
   }
+
   render() {
     return (
       <div className="settings">

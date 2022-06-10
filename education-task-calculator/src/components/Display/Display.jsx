@@ -1,24 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import { Container, DisplayLine, DisplayValue } from './styled';
+import types from './types';
 
-import './display.css';
-const DisplayLine = styled.div`
-  width: 100%;
-  height: 2px;
-  background-color: ${(theme) => theme.color};
-`;
-const Display = ({ displayVal, theme }) => {
+function Display({ displayVal, theme }) {
   return (
-    <div className="display">
-      <span className="display-value">{displayVal}</span>
-      <DisplayLine color={theme.border}></DisplayLine>
-    </div>
+    <Container>
+      <DisplayValue>{displayVal}</DisplayValue>
+      <DisplayLine color={theme.border} />
+    </Container>
   );
-};
+}
 
 export default Display;
 
-Display.propTypes = {
-  displayVal: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
+Display.propTypes = types;

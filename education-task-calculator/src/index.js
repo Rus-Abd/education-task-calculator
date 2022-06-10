@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from './utils/themeContext';
-import { Header } from './components/Header/Header';
+import Header from './components/Header/Header';
 import Settings from './screens/Settings/Settings';
 import Home from './screens/Home/Home';
 

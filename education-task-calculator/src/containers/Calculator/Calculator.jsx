@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
 import themeContext from '../../utils/themeContext';
 import Display from '../../components/Display/Display';
-import { History } from '../../components/History/History';
-import { KeyPad } from '../../components/Keypad/Keypad';
+import History from '../../components/History/History';
+import KeyPad from '../../components/Keypad/Keypad';
 import { getFromLS } from '../../utils/storage';
 import './calculator.css';
 
-export const Calculator = () => {
+export default function Calculator() {
   const { theme } = useContext(themeContext);
   const [displayVal, setDisplayVal] = useState('');
   const [history, setHistory] = useState(getFromLS('history') || []);
@@ -25,4 +25,4 @@ export const Calculator = () => {
       <History history={history} />
     </main>
   );
-};
+}

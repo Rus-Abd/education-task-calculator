@@ -1,13 +1,3 @@
-.history {
-  margin-left: 23px;
-  margin-top: 23px;
-  display: flex;
-}
-
-.history-log span {
-  font-size: 32px;
-  margin-left: 160px;
-}
 .history-log-values {
   margin-left: 53px;
   margin-top: 50px;

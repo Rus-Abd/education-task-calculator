@@ -10,11 +10,12 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  extends: ['react-app', 'prettier'],
+  extends: ['airbnb', 'prettier', 'react-app'],
 
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': ['error', prettierOptions],
     'no-console': 'error',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
   },
 };

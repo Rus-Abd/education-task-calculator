@@ -1,4 +1,4 @@
-export const themes = {
+const themes = {
   light: {
     background: '#FFFFFF',
     headerBackground: '#434343',
@@ -22,3 +22,4 @@ export const themes = {
     bodyText: '#ef3550',
   },
 };
+export default themes;

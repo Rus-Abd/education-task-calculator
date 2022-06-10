@@ -1,34 +1,26 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import themeContext from '../../utils/themeContext';
 import './header.css';
-const SHeader = styled.header`
-  width: 100%;
-  height: 120px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: ${(theme) => theme.backGround};
-  color: ${(theme) => theme.color};
-`;
-export const Header = () => {
+import { Navigation, NavLink, SHeader, SHeaderTitle } from './styled';
+
+export default function Header() {
   const { theme } = useContext(themeContext);
   return (
     <SHeader backGround={theme.headerBackground} color={theme.headerText}>
-      <h1>Calculator App</h1>
-      <ul className="header-list">
-        <li>
+      <SHeaderTitle>Calculator App</SHeaderTitle>
+      <Navigation>
+        <NavLink>
           <Link className="text-link" to="/">
             Home
           </Link>
-        </li>
-        <li>
+        </NavLink>
+        <NavLink>
           <Link className="text-link" to="/settings/">
             Settings
           </Link>
-        </li>
-      </ul>
+        </NavLink>
+      </Navigation>
     </SHeader>
   );
-};
+}

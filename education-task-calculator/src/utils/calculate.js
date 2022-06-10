@@ -1,29 +1,40 @@
-export function calculate(eq, callback) {
-  if (typeof eq !== 'string')
+export default function calculate(eq, callback) {
+  function handleCallback(errObject, result) {
+    if (typeof callback !== 'function') {
+      if (errObject !== null) throw errObject;
+    } else {
+      callback(errObject, result);
+    }
+    return result;
+  }
+
+  if (typeof eq !== 'string') {
     return handleCallback(
       new TypeError('The [String] argument is expected.'),
       null,
     );
+  }
   const mulDiv =
     /([+-]?\d*\.?\d+(?:e[+-]\d+)?)\s*([*/])\s*([+-]?\d*\.?\d+(?:e[+-]\d+)?)/;
   const plusMin =
     /([+-]?\d*\.?\d+(?:e[+-]\d+)?)\s*([+-])\s*([+-]?\d*\.?\d+(?:e[+-]\d+)?)/;
   const parentheses = /(\d)?\s*\(([^()]*)\)\s*/;
-  var current;
+  let current;
   while (eq.search(/^\s*([+-]?\d*\.?\d+(?:e[+-]\d+)?)\s*$/) === -1) {
     eq = fParentheses(eq);
-    if (eq === current)
+    if (eq === current) {
       return handleCallback(new SyntaxError('The equation is invalid.'), null);
+    }
     current = eq;
   }
   return handleCallback(null, +eq);
 
   function fParentheses(eq) {
     while (eq.search(parentheses) !== -1) {
-      eq = eq.replace(parentheses, function (a, b, c) {
+      eq = eq.replace(parentheses, (a, b, c) => {
         c = fMulDiv(c);
         c = fPlusMin(c);
-        return typeof b === 'string' ? b + '*' + c : c;
+        return typeof b === 'string' ? `${b}*${c}` : c;
       });
     }
     eq = fMulDiv(eq);
@@ -33,49 +44,27 @@ export function calculate(eq, callback) {
 
   function fMulDiv(eq) {
     while (eq.search(mulDiv) !== -1) {
-      eq = eq.replace(mulDiv, function (a) {
+      eq = eq.replace(mulDiv, (a) => {
         const sides = mulDiv.exec(a);
         const result =
           sides[2] === '*' ? sides[1] * sides[3] : sides[1] / sides[3];
-        return result >= 0 ? '+' + result : result;
+        return result >= 0 ? `+${result}` : result;
       });
     }
     return eq;
   }
 
   function fPlusMin(eq) {
-    eq = eq.replace(/([+-])([+-])(\d|\.)/g, function (a, b, c, d) {
-      return (b === c ? '+' : '-') + d;
-    });
+    eq = eq.replace(
+      /([+-])([+-])(\d|\.)/g,
+      (a, b, c, d) => (b === c ? '+' : '-') + d,
+    );
     while (eq.search(plusMin) !== -1) {
-      eq = eq.replace(plusMin, function (a) {
+      eq = eq.replace(plusMin, (a) => {
         const sides = plusMin.exec(a);
         return sides[2] === '+' ? +sides[1] + +sides[3] : sides[1] - sides[3];
       });
     }
     return eq;
   }
-
-  function handleCallback(errObject, result) {
-    if (typeof callback !== 'function') {
-      if (errObject !== null) throw errObject;
-    } else {
-      callback(errObject, result);
-    }
-    return result;
-  }
 }
-// export default class calculator {
-//   constructor() {
-//     this.value = 0;
-//   }
-//   add(num) {
-//     this.value += num;
-//   }
-//   subtract(num) {
-//     this.value -= num;
-//   }
-//   multiply(num) {
-//     this.value *= num;
-//   }
-// }
