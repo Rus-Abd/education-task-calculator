@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { getFromLS } from './storage';
 import themes from '../constants/themes';
 
@@ -7,11 +8,13 @@ export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(
     themes[`${getFromLS('theme').length > 0 ? getFromLS('theme') : 'light'}`],
   );
-  const switchTheme = (theme) => setTheme(theme);
+  const switchTheme = (currTheme) => setTheme(currTheme);
+  const value = useMemo(() => ({ theme, switchTheme }), [theme]);
   return (
-    <themeContext.Provider value={{ theme, switchTheme }}>
-      {children}
-    </themeContext.Provider>
+    <themeContext.Provider value={value}>{children}</themeContext.Provider>
   );
 }
 export default themeContext;
+ThemeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

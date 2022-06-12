@@ -6,12 +6,16 @@ export const DisplayLine = styled.div`
   background-color: ${(theme) => theme.color};
 `;
 export const DisplayValue = styled.span`
-  width: 100%;
+  max-width: 700px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   height: 80px;
   display: flex;
   justify-content: flex-end;
   font-size: 64px;
   padding-right: 47px;
+  margin-left: 80px;
 `;
 export const Container = styled.div`
   margin-left: 42px;

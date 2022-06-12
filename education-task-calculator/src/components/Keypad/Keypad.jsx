@@ -30,8 +30,9 @@ const calculatorValues = [
 ];
 export default function KeyPad({ setDisplayVal, setHistory, history, theme }) {
   const [stack, setStack] = useState([]);
+
   const handleClick = (e) => {
-    const value = e.target.innerHTML;
+    const value = e.target.innerText;
     if (e.target.tagName === 'BUTTON') {
       switch (value) {
         case '=':

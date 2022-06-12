@@ -22,3 +22,9 @@ export const HistoryLogValues = styled.ul`
   display: flex;
   flex-direction: column;
 `;
+export const HistoryLogItem = styled.li`
+  margin-bottom: 20px;
+  font-size: 32px;
+  max-width: 200px;
+  overflow: hidden;
+`;

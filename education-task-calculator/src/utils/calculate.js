@@ -5,7 +5,7 @@ export default function calculate(eq, callback) {
     } else {
       callback(errObject, result);
     }
-    return result;
+    return parseFloat(result.toFixed(3));
   }
 
   if (typeof eq !== 'string') {

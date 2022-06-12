@@ -1,5 +1,5 @@
 .settings {
-  margin-top: 61px;
+  margin-top: 25px;
   margin-left: 84px;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
   text-indent: 27px;
 }
 
-.settings-clear {
+.settings-button {
   cursor: pointer;
   width: 401px;
   height: 93px;

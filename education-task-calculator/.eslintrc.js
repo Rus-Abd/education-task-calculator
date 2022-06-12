@@ -17,5 +17,8 @@ module.exports = {
     'prettier/prettier': ['error', prettierOptions],
     'no-console': 'error',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/prefer-stateless-function': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'class-methods-use-this': 'off',
   },
 };
