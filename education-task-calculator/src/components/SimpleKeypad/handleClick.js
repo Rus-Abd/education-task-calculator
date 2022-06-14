@@ -71,11 +71,17 @@ const handleClick = (
 
       case 'CE':
         setCurrentVal(calculator.undo());
+        setDisplayVal(calculator.getValue());
         break;
 
       case 'C':
         setCurrentVal(calculator.reset());
         setDisplayVal(calculator.getValue());
+        break;
+
+      case '.':
+        setCurrentVal(`${currentVal}${value}`);
+        setDisplayVal(currentVal);
         break;
 
       default:
@@ -107,11 +113,18 @@ const handleClick = (
 
       case 'CE':
         setCurrentVal(calculator.undo());
+        setDisplayVal(calculator.getValue());
         break;
 
       case 'C':
         setCurrentVal(calculator.reset());
         setDisplayVal(calculator.getValue());
+        break;
+      case '.':
+        calculator.secondvalue = `${calculator.secondvalue}${value}`;
+
+        setCurrentVal(calculator.secondvalue);
+        setDisplayVal(calculator.secondvalue);
         break;
       case '=':
         calculator.executeCommand(operation(operand, calculator.secondvalue));

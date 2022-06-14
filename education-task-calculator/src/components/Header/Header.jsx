@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import themeContext from '../../utils/themeContext';
 import './header.css';
-import { Navigation, NavLink, SHeader, SHeaderTitle } from './styled';
+import { Navigation, SHeader, SHeaderTitle } from './styled';
 
 export default function Header() {
   const { theme } = useContext(themeContext);
@@ -12,20 +12,14 @@ export default function Header() {
     <SHeader backGround={theme.headerBackground} color={theme.headerText}>
       <SHeaderTitle> {t('header.title')}</SHeaderTitle>
       <Navigation>
-        <NavLink>
-          <Link className="text-link" to="/">
-            {t('header.nav.0')}
-          </Link>
+        <NavLink to="/" activeClassName="active-link" className="link">
+          {t('header.nav.0')}
         </NavLink>
-        <NavLink>
-          <Link className="text-link" to="/homeCC">
-            {t('header.nav.1')}
-          </Link>
+        <NavLink to="/homeCC" activeClassName="active-link" className="link">
+          {t('header.nav.1')}
         </NavLink>
-        <NavLink>
-          <Link className="text-link" to="/settings/">
-            {t('header.nav.2')}
-          </Link>
+        <NavLink to="/settings/" activeClassName="active-link" className="link">
+          {t('header.nav.2')}
         </NavLink>
       </Navigation>
     </SHeader>

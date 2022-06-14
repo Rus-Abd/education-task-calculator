@@ -1,5 +1,21 @@
-.text-link {
+.link {
+  margin-right: 32px;
+  opacity: 0.7;
+  transition: 0.7s all;
   color: inherit;
   text-decoration: inherit;
   font-size: 32px;
+}
+
+.active-link {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  color: springgreen;
+}
+.active {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  color: springgreen;
 }

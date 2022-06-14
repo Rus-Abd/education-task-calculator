@@ -17,13 +17,3 @@ export const Navigation = styled.ul`
   list-style: none;
   display: flex;
 `;
-export const NavLink = styled.li`
-  margin-right: 32px;
-  opacity: 0.7;
-  transition: 0.7s all;
-  &:hover {
-    opacity: 1;
-    text-decoration: underline;
-    text-underline-offset: 10px;
-  }
-`;
