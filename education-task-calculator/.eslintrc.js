@@ -20,5 +20,6 @@ module.exports = {
     'react/prefer-stateless-function': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'class-methods-use-this': 'off',
+    'consistent-return': 'off',
   },
 };
