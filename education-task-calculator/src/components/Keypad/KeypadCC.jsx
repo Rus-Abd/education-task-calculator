@@ -43,9 +43,13 @@ export default class KeypadCC extends Component {
     setDisplayVal({ displayVal: stack.join('') });
   }
 
-  //   componentDidUpdate(prevProps) {
-  //       if(prevProps.stack!==)
-  //   }
+  componentDidUpdate(prevProps, prevState) {
+    const { stack } = this.state;
+    const { setDisplayVal } = this.props;
+    if (prevState.stack !== stack) {
+      setDisplayVal({ displayVal: stack.join('') });
+    }
+  }
 
   componentWillUnmount() {
     const { history } = this.props;
