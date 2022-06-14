@@ -6,6 +6,7 @@ import './calculator.css';
 import DisplayCC from '../../components/Display/DisplayCC';
 import KeypadCC from '../../components/Keypad/KeypadCC';
 import HistoryCC from '../../components/History/HistoryCC';
+import SimpleKeypad from '../../components/SimpleKeypad/SimpleKeypad';
 
 export default class CalculatorCC extends Component {
   constructor(props) {

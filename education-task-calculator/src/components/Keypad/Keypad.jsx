@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import calculate from '../../utils/calculate';
 import { setToLS } from '../../utils/storage';
 
-import { Container, Button } from './styles';
+import { Container, Button } from './styled';
 import types from './types';
 
 const calculatorValues = [
@@ -32,7 +32,8 @@ export default function KeyPad({ setDisplayVal, setHistory, history, theme }) {
   const [stack, setStack] = useState([]);
 
   const handleClick = (e) => {
-    const value = e.target.innerText;
+    const value = e.target.innerHTML;
+
     if (e.target.tagName === 'BUTTON') {
       switch (value) {
         case '=':
@@ -51,8 +52,10 @@ export default function KeyPad({ setDisplayVal, setHistory, history, theme }) {
           setDisplayVal(stack.join(''));
           break;
         default:
-          setStack(stack.concat(value));
-          setDisplayVal(stack.join(''));
+          if (stack.length < 13) {
+            setStack(stack.concat(value));
+            setDisplayVal(stack.join(''));
+          }
       }
     }
   };

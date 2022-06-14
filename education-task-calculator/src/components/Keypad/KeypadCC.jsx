@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import calculate from '../../utils/calculate';
 import { setToLS } from '../../utils/storage';
 
-import { Container, Button } from './styles';
+import { Container, Button } from './styled';
 import types from './types';
 
 const calculatorValues = [
@@ -77,8 +77,10 @@ export default class KeypadCC extends Component {
           setDisplayVal({ displayVal: stack.join('') });
           break;
         default:
-          this.setState({ stack: stack.concat(value) });
-          setDisplayVal({ displayVal: stack.join('') });
+          if (stack.length < 13) {
+            this.setState({ stack: stack.concat(value) });
+            setDisplayVal({ displayVal: stack.join('') });
+          }
       }
     }
   }

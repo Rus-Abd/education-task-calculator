@@ -22,15 +22,15 @@ class Settings extends Component {
     switchTheme(themes[e.target.value]);
   }
 
-  eraseHistory() {
+  eraseHistory = () => {
     setToLS('history', '');
-  }
+  };
 
-  changeLanguage() {
+  changeLanguage = () => {
     const { i18n } = this.props;
     const newLang = i18n.language === 'ru' ? 'en' : 'ru';
     i18n.changeLanguage(newLang);
-  }
+  };
 
   render() {
     const { value } = this.state;
@@ -53,14 +53,14 @@ class Settings extends Component {
 
         <button
           className="settings-button"
-          onClick={() => this.eraseHistory()}
+          onClick={this.eraseHistory}
           type="button">
           {t('settings.eraseHistory')}
         </button>
         <button
           className="settings-button"
           type="button"
-          onClick={() => this.changeLanguage()}>
+          onClick={this.changeLanguage}>
           {t('settings.changeLang')}
         </button>
       </div>
