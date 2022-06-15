@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Calculator from '@utils/simpleCalculate';
+import { setToLS } from '@utils/storage';
 import handleClick from './handleClick';
-import Calculator from '../../utils/simpleCalculate';
-import { setToLS } from '../../utils/storage';
 import { Button, Container } from './styled';
 import types from './types';
 
@@ -35,7 +35,7 @@ export default function SimpleKeypad({
   history,
   theme,
 }) {
-  const [currentVal, setCurrentVal] = useState(() => calculator.getValue());
+  const [currentVal, setCurrentVal] = useState(() => calculator.value);
   const [operand, setOperand] = useState(null);
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import {
   SubtractCommand,
   MultiplyCommand,
   DivideCommand,
+  PercentCommand,
 } from '../../utils/simpleCalculate';
 
 function operation(currOperation, val) {
@@ -16,8 +17,26 @@ function operation(currOperation, val) {
       return new MultiplyCommand(val);
     case 'divide':
       return new DivideCommand(val);
+    case 'percent':
+      return new PercentCommand(val);
     default:
       break;
+  }
+}
+function nameToSymbol(name) {
+  switch (name) {
+    case 'add':
+      return '+';
+    case 'subtract':
+      return '-';
+    case 'multiply':
+      return '*';
+    case 'divide':
+      return '/';
+    case 'percent':
+      return '%';
+    default:
+      return 'Unknown';
   }
 }
 const handleClick = (
@@ -55,6 +74,11 @@ const handleClick = (
         calculator.value = currentVal;
         break;
 
+      case '%':
+        setOperand('percent');
+        calculator.value = currentVal;
+        break;
+
       case '+/-':
         setCurrentVal(currentVal * -1);
         setDisplayVal(currentVal);
@@ -63,7 +87,7 @@ const handleClick = (
       case '=':
         try {
           setDisplayVal(calculator.value);
-          setHistory(history.concat(calculator.getValue()));
+          setHistory(history.concat(calculator.value));
         } catch (error) {
           throw Error(error);
         }
@@ -71,12 +95,12 @@ const handleClick = (
 
       case 'CE':
         setCurrentVal(calculator.undo());
-        setDisplayVal(calculator.getValue());
+        setDisplayVal(calculator.value);
         break;
 
       case 'C':
         setCurrentVal(calculator.reset());
-        setDisplayVal(calculator.getValue());
+        setDisplayVal(calculator.value);
         break;
 
       case '.':
@@ -106,6 +130,10 @@ const handleClick = (
         setOperand('divide');
         break;
 
+      case '%':
+        setOperand('percent');
+        break;
+
       case '+/-':
         calculator.secondvalue *= -1;
         setDisplayVal(calculator.secondvalue);
@@ -113,12 +141,12 @@ const handleClick = (
 
       case 'CE':
         setCurrentVal(calculator.undo());
-        setDisplayVal(calculator.getValue());
+        setDisplayVal(calculator.value);
         break;
 
       case 'C':
         setCurrentVal(calculator.reset());
-        setDisplayVal(calculator.getValue());
+        setDisplayVal(calculator.value);
         break;
       case '.':
         calculator.secondvalue = `${calculator.secondvalue}${value}`;
@@ -127,10 +155,18 @@ const handleClick = (
         setDisplayVal(calculator.secondvalue);
         break;
       case '=':
+        setHistory(
+          history.concat(
+            `${calculator.value} ${nameToSymbol(operand)} ${
+              calculator.secondvalue
+            } `,
+          ),
+        );
         calculator.executeCommand(operation(operand, calculator.secondvalue));
         setCurrentVal(calculator.value);
         setDisplayVal(calculator.value);
         setOperand(null);
+
         calculator.secondvalue = 0;
         break;
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
-import { getFromLS, setToLS } from '../../utils/storage';
-import themeContext from '../../utils/themeContext';
+import { getFromLS, setToLS } from '@utils/storage';
+import themeContext from '@utils/themeContext';
 
-import themes from '../../constants/themes';
+import themes from '@constants/themes';
 import './settings.css';
 
 class Settings extends Component {

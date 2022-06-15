@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import calculate from '../../utils/calculate';
-import { setToLS } from '../../utils/storage';
+import calculate from '@utils/calculate';
+import { setToLS } from '@utils/storage';
 
 import { Container, Button } from './styled';
 import types from './types';

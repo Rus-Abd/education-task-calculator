@@ -1,7 +1,7 @@
 import React, { createContext, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import themes from '@constants/themes';
 import { getFromLS } from './storage';
-import themes from '../constants/themes';
 
 const themeContext = createContext();
 export function ThemeProvider({ children }) {

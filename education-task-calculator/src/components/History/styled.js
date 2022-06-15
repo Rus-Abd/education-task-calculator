@@ -16,6 +16,9 @@ export const HistoryLogTitle = styled.span`
   margin-left: 160px;
 `;
 export const HistoryLogValues = styled.ul`
+  height: 500px;
+  overflow: ${(props) =>
+    props.length < 8 || props.showMore ? 'hidden' : 'scroll'};
   margin-left: 53px;
   margin-top: 50px;
   list-style: none;
@@ -24,7 +27,7 @@ export const HistoryLogValues = styled.ul`
 `;
 export const HistoryLogItem = styled.li`
   margin-bottom: 20px;
+  margin-left: 53px;
   font-size: 32px;
   max-width: 200px;
-  overflow: hidden;
 `;

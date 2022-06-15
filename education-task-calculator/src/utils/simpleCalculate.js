@@ -1,4 +1,6 @@
-// eslint-disable-next-line max-classes-per-file
+/* eslint-disable max-classes-per-file */
+import fixedTothree from './fixedToThree';
+
 class Calculator {
   constructor() {
     this.value = 0;
@@ -13,7 +15,7 @@ class Calculator {
   }
 
   executeCommand(command) {
-    this.value = command.execute(this.value);
+    this.value = fixedTothree(command.execute(this.value));
 
     this.history.push(command);
   }
@@ -23,13 +25,10 @@ class Calculator {
     this.value = command.undo(this.value);
   }
 
-  getValue() {
-    return this.value;
-  }
-
   reset() {
     this.value = 0;
     this.secondvalue = 0;
+    this.history.length = 0;
     return this.value;
   }
 }
@@ -89,7 +88,7 @@ export class DivideCommand {
     return currentValue * this.valueToDivide;
   }
 }
-export class percentCommand {
+export class PercentCommand {
   constructor(valueToPercent) {
     this.valueToPercent = valueToPercent;
     this.prevValue = 0;

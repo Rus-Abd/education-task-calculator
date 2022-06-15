@@ -13,18 +13,54 @@ import {
 } from './styled';
 
 class HistoryCC extends Component {
+  constructor(props) {
+    super(props);
+    const { history } = this.props;
+    this.state = {
+      showMore: history.length > 7,
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { history } = this.props;
+    if (prevProps.history !== history) {
+      this.setState({ showMore: history.length > 7 });
+    }
+  }
+
   render() {
     const { history, t } = this.props;
+    const { showMore } = this.state;
+
+    let itemList;
+    if (showMore) {
+      itemList = history.map((el, index) =>
+        index < 7 ? (
+          // eslint-disable-next-line react/no-array-index-key
+          <HistoryLogItem key={index}>{el}</HistoryLogItem>
+        ) : null,
+      );
+    } else {
+      itemList = history.map((el, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <HistoryLogItem key={index}>{el}</HistoryLogItem>
+      ));
+    }
+
     return (
       <Container>
         <HistoryLine />
         <HistoryLog>
           <HistoryLogTitle>{t('history')}</HistoryLogTitle>
-          <HistoryLogValues>
-            {history.map((el, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <HistoryLogItem key={index}>{el}</HistoryLogItem>
-            ))}
+          <HistoryLogValues length={history.length} showMore={showMore}>
+            {itemList}
+            {showMore && (
+              <span
+                onClick={() => this.setState({ showMore: false })}
+                className="button-show">
+                Show More
+              </span>
+            )}
           </HistoryLogValues>
         </HistoryLog>
       </Container>
@@ -32,7 +68,9 @@ class HistoryCC extends Component {
   }
 }
 HistoryCC.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.string),
+  history: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  ),
   t: PropTypes.func.isRequired,
 };
 HistoryCC.defaultProps = {
