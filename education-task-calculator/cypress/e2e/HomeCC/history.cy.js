@@ -46,7 +46,10 @@ describe('Home page updates history correctly', () => {
 });
 describe('Is in sync with homeCC history', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('/settings');
+    cy.get('.settings > :nth-child(3)').click();
+    cy.visit('/homeCC');
+    cy.get('[data-cy="buttonC"]').click();
   });
 
   it('Can add 3930+93+29 to history', () => {
@@ -65,8 +68,7 @@ describe('Is in sync with homeCC history', () => {
     cy.get('.sc-jqUVSM')
       .children()
       .then((items) => {
-        expect(items[0]).to.contain.text('3930 + 93');
-        expect(items[1]).to.contain.text('4023 + 93');
+        expect(items[0]).to.contain.text('3930+93+29');
       });
   });
 });
