@@ -69,7 +69,11 @@ export default function KeyPad({ setDisplayVal, setHistory, history, theme }) {
   return (
     <Container onClick={(e) => handleClick(e)}>
       {calculatorValues.map((el) => (
-        <Button key={el} color={theme.bodyText} backGround={theme.background}>
+        <Button
+          key={el}
+          color={theme.bodyText}
+          backGround={theme.background}
+          data-cy={`button${el}`}>
           {el}
         </Button>
       ))}

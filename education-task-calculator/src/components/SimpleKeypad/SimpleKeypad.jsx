@@ -40,7 +40,7 @@ export default function SimpleKeypad({
 
   useEffect(() => {
     setDisplayVal(currentVal);
-    return () => setToLS('history', history);
+    setToLS('history', history);
   }, [currentVal, setDisplayVal, history]);
 
   return (
@@ -59,7 +59,11 @@ export default function SimpleKeypad({
         )
       }>
       {calculatorValues.map((el) => (
-        <Button key={el} color={theme.bodyText} backGround={theme.background}>
+        <Button
+          key={el}
+          color={theme.bodyText}
+          backGround={theme.background}
+          data-cy={`button${el}`}>
           {el}
         </Button>
       ))}

@@ -45,19 +45,18 @@ export default class KeypadCC extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { stack } = this.state;
-    const { setDisplayVal } = this.props;
+    const { setDisplayVal, history } = this.props;
     if (prevState.stack !== stack) {
       setDisplayVal({ displayVal: stack.join('') });
+      setToLS('history', history);
+    }
+    if (prevProps.history !== history) {
+      setToLS('history', history);
     }
   }
 
-  componentWillUnmount() {
-    const { history } = this.props;
-    setToLS('history', history);
-  }
-
   handleClick(e) {
-    const { stack, setState } = this.state;
+    const { stack } = this.state;
     const { setHistory, setDisplayVal, history } = this.props;
     const value = e.target.innerText;
     if (e.target.tagName === 'BUTTON') {
@@ -95,7 +94,11 @@ export default class KeypadCC extends Component {
     return (
       <Container onClick={(e) => this.handleClick(e)}>
         {calculatorValues.map((el) => (
-          <Button key={el} color={theme.bodyText} backGround={theme.background}>
+          <Button
+            key={el}
+            color={theme.bodyText}
+            backGround={theme.background}
+            data-cy={`button${el}`}>
             {el}
           </Button>
         ))}

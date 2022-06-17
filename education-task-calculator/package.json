@@ -23,6 +23,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "eject": "craco eject",
     "eslint:test": "eslint  . --ext .js,.jsx",
     "eslint:fix": "eslint  . --ext .js,.jsx --fix"
@@ -47,10 +49,12 @@
   },
   "devDependencies": {
     "craco-alias": "^3.0.1",
+    "cypress": "^10.1.0",
     "eslint": "^8.16.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",

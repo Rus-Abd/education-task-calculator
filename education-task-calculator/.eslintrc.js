@@ -9,10 +9,11 @@ module.exports = {
   env: {
     browser: true,
     jest: true,
+    'cypress/globals': true,
   },
   extends: ['airbnb', 'prettier', 'react-app'],
 
-  plugins: ['prettier'],
+  plugins: ['prettier', 'cypress'],
   rules: {
     'prettier/prettier': ['error', prettierOptions],
     'no-console': 'error',
@@ -24,5 +25,6 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'import/no-unresolved': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };

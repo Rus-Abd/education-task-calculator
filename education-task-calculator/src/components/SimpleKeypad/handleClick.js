@@ -52,44 +52,50 @@ const handleClick = (
 ) => {
   const value = e.target.innerText;
 
-  if (e.target.tagName === 'BUTTON' && operand === null) {
+  if (e.target.tagName === 'BUTTON') {
     switch (value) {
       case '+':
         setOperand('add');
-        calculator.value = currentVal;
+        if (operand === null) {
+          calculator.value = currentVal;
+        }
         break;
 
       case '-':
         setOperand('subtract');
-        calculator.value = currentVal;
+        if (operand === null) {
+          calculator.value = currentVal;
+        }
         break;
 
       case '*':
         setOperand('multiply');
-        calculator.value = currentVal;
+        if (operand === null) {
+          calculator.value = currentVal;
+        }
         break;
 
       case '/':
         setOperand('divide');
-        calculator.value = currentVal;
+        if (operand === null) {
+          calculator.value = currentVal;
+        }
         break;
 
       case '%':
         setOperand('percent');
-        calculator.value = currentVal;
+        if (operand === null) {
+          calculator.value = currentVal;
+        }
         break;
 
       case '+/-':
-        setCurrentVal(currentVal * -1);
-        setDisplayVal(currentVal);
-        break;
-
-      case '=':
-        try {
-          setDisplayVal(calculator.value);
-          setHistory(history.concat(calculator.value));
-        } catch (error) {
-          throw Error(error);
+        if (operand === null) {
+          setCurrentVal(currentVal * -1);
+          setDisplayVal(currentVal);
+        } else {
+          calculator.secondvalue *= -1;
+          setDisplayVal(calculator.secondvalue);
         }
         break;
 
@@ -104,80 +110,53 @@ const handleClick = (
         break;
 
       case '.':
-        setCurrentVal(`${currentVal}${value}`);
-        setDisplayVal(currentVal);
+        if (operand === null) {
+          setCurrentVal(`${currentVal}${value}`);
+          setDisplayVal(currentVal);
+        } else {
+          calculator.secondvalue = `${calculator.secondvalue}${value}`;
+          setCurrentVal(calculator.secondvalue);
+          setDisplayVal(calculator.secondvalue);
+        }
+
         break;
 
-      default:
-        setCurrentVal(parseFloat(`${currentVal}${value}`));
-        setDisplayVal(currentVal);
-    }
-  } else if (e.target.tagName === 'BUTTON' && operand !== null) {
-    switch (value) {
-      case '+':
-        setOperand('add');
-        break;
-
-      case '-':
-        setOperand('subtract');
-        break;
-
-      case '*':
-        setOperand('multiply');
-        break;
-
-      case '/':
-        setOperand('divide');
-        break;
-
-      case '%':
-        setOperand('percent');
-        break;
-
-      case '+/-':
-        calculator.secondvalue *= -1;
-        setDisplayVal(calculator.secondvalue);
-        break;
-
-      case 'CE':
-        setCurrentVal(calculator.undo());
-        setDisplayVal(calculator.value);
-        break;
-
-      case 'C':
-        setCurrentVal(calculator.reset());
-        setDisplayVal(calculator.value);
-        break;
-      case '.':
-        calculator.secondvalue = `${calculator.secondvalue}${value}`;
-
-        setCurrentVal(calculator.secondvalue);
-        setDisplayVal(calculator.secondvalue);
-        break;
       case '=':
-        setHistory(
-          history.concat(
-            `${calculator.value} ${nameToSymbol(operand)} ${
-              calculator.secondvalue
-            } `,
-          ),
-        );
-        calculator.executeCommand(operation(operand, calculator.secondvalue));
-        setCurrentVal(calculator.value);
-        setDisplayVal(calculator.value);
-        setOperand(null);
+        if (operand === null && `${calculator.value}`.length < 13) {
+          try {
+            setDisplayVal(calculator.value);
+            setHistory(history.concat(calculator.value));
+          } catch (error) {
+            throw Error(error);
+          }
+        } else if (`${calculator.value}`.length < 13) {
+          setHistory(
+            history.concat(
+              `${calculator.value} ${nameToSymbol(operand)} ${
+                calculator.secondvalue
+              } `,
+            ),
+          );
+          calculator.executeCommand(operation(operand, calculator.secondvalue));
+          setCurrentVal(calculator.value);
+          setDisplayVal(calculator.value);
+          setOperand(null);
 
-        calculator.secondvalue = 0;
+          calculator.secondvalue = 0;
+        }
         break;
 
       default:
-        calculator.secondvalue = parseFloat(
-          `${calculator.secondvalue}${value}`,
-        );
-        setCurrentVal(calculator.secondvalue);
-        setDisplayVal(calculator.secondvalue);
-
-        break;
+        if (operand === null && `${currentVal}${value}`.length < 13) {
+          setCurrentVal(parseFloat(`${currentVal}${value}`));
+          setDisplayVal(currentVal);
+        } else if (`${currentVal}${value}`.length < 13) {
+          calculator.secondvalue = parseFloat(
+            `${calculator.secondvalue}${value}`,
+          );
+          setCurrentVal(calculator.secondvalue);
+          setDisplayVal(calculator.secondvalue);
+        }
     }
   }
 };

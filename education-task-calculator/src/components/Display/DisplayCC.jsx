@@ -7,7 +7,7 @@ export default class DisplayCC extends React.Component {
     const { displayVal, theme } = this.props;
     return (
       <Container>
-        <DisplayValue>{displayVal}</DisplayValue>
+        <DisplayValue data-cy="displayValue">{displayVal}</DisplayValue>
         <DisplayLine color={theme.border} />
       </Container>
     );

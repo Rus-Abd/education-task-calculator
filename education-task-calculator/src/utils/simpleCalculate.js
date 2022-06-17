@@ -18,11 +18,16 @@ class Calculator {
     this.value = fixedTothree(command.execute(this.value));
 
     this.history.push(command);
+    return this.value;
   }
 
   undo() {
-    const command = this.history.pop();
-    this.value = command.undo(this.value);
+    if (this.history.length > 0) {
+      const command = this.history.pop();
+      this.value = command.undo(this.value);
+      return this.value;
+    }
+    return this.value;
   }
 
   reset() {

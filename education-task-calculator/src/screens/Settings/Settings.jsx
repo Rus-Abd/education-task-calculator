@@ -44,10 +44,17 @@ class Settings extends Component {
             multiple={false}
             id="theme"
             onChange={(e) => this.handleSelect(e)}
-            value={`${value}`}>
-            <option value="light">{t('settings.themes.0')}</option>
-            <option value="dark">{t('settings.themes.1')}</option>
-            <option value="colored">{t('settings.themes.2')}</option>
+            value={`${value}`}
+            data-cy="theme-select">
+            <option value="light" data-cy="theme-light">
+              {t('settings.themes.0')}
+            </option>
+            <option value="dark" data-cy="theme-dark">
+              {t('settings.themes.1')}
+            </option>
+            <option value="colored" data-cy="theme-colored">
+              {t('settings.themes.2')}
+            </option>
           </select>
         </div>
 

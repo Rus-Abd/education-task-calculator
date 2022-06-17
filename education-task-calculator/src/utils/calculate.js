@@ -20,51 +20,54 @@ export default function calculate(eq, callback) {
     /([+-]?\d*\.?\d+(?:e[+-]\d+)?)\s*([+-])\s*([+-]?\d*\.?\d+(?:e[+-]\d+)?)/;
   const parentheses = /(\d)?\s*\(([^()]*)\)\s*/;
   let current;
-  while (eq.search(/^\s*([+-]?\d*\.?\d+(?:e[+-]\d+)?)\s*$/) === -1) {
-    eq = fParentheses(eq);
-    if (eq === current) {
+  let equation = eq;
+  while (equation.search(/^\s*([+-]?\d*\.?\d+(?:e[+-]\d+)?)\s*$/) === -1) {
+    equation = fParentheses(equation);
+    if (equation === current) {
       return handleCallback(new SyntaxError('The equation is invalid.'), null);
     }
-    current = eq;
+    current = equation;
   }
-  return handleCallback(null, +eq);
+  return handleCallback(null, +equation);
 
-  function fParentheses(eq) {
-    while (eq.search(parentheses) !== -1) {
-      eq = eq.replace(parentheses, (a, b, c) => {
-        c = fMulDiv(c);
-        c = fPlusMin(c);
-        return typeof b === 'string' ? `${b}*${c}` : c;
+  function fParentheses(str) {
+    let eqWithParanth = str;
+    while (eqWithParanth.search(parentheses) !== -1) {
+      eqWithParanth = eqWithParanth.replace(parentheses, (a, b, c) => {
+        let temp = fMulDiv(c);
+        temp = fPlusMin(c);
+        return typeof b === 'string' ? `${b}*${temp}` : temp;
       });
     }
-    eq = fMulDiv(eq);
-    eq = fPlusMin(eq);
-    return eq;
+    eqWithParanth = fMulDiv(eqWithParanth);
+    eqWithParanth = fPlusMin(eqWithParanth);
+    return eqWithParanth;
   }
 
-  function fMulDiv(eq) {
-    while (eq.search(mulDiv) !== -1) {
-      eq = eq.replace(mulDiv, (a) => {
+  function fMulDiv(str) {
+    let val = str;
+    while (val.search(mulDiv) !== -1) {
+      val = val.replace(mulDiv, (a) => {
         const sides = mulDiv.exec(a);
         const result =
           sides[2] === '*' ? sides[1] * sides[3] : sides[1] / sides[3];
         return result >= 0 ? `+${result}` : result;
       });
     }
-    return eq;
+    return val;
   }
 
-  function fPlusMin(eq) {
-    eq = eq.replace(
+  function fPlusMin(str) {
+    let res = str.replace(
       /([+-])([+-])(\d|\.)/g,
       (a, b, c, d) => (b === c ? '+' : '-') + d,
     );
-    while (eq.search(plusMin) !== -1) {
-      eq = eq.replace(plusMin, (a) => {
+    while (res.search(plusMin) !== -1) {
+      res = res.replace(plusMin, (a) => {
         const sides = plusMin.exec(a);
         return sides[2] === '+' ? +sides[1] + +sides[3] : sides[1] - sides[3];
       });
     }
-    return eq;
+    return res;
   }
 }
