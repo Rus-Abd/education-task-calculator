@@ -134,7 +134,7 @@ const handleClick = (
             history.concat(
               `${calculator.value} ${nameToSymbol(operand)} ${
                 calculator.secondvalue
-              } `,
+              }`,
             ),
           );
           calculator.executeCommand(operation(operand, calculator.secondvalue));
