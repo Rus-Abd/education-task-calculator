@@ -44,12 +44,15 @@ export default function KeyPad({ setDisplayVal, setHistory, history, theme }) {
             throw Error(error);
           }
           break;
+
         case 'CE':
           setStack(stack.filter((el, index) => index !== stack.length - 1));
           break;
+
         case 'C':
           setStack(stack.filter((el) => false));
           setDisplayVal(stack.join(''));
+
           break;
         default:
           if (stack.length < 13) {
@@ -59,9 +62,11 @@ export default function KeyPad({ setDisplayVal, setHistory, history, theme }) {
       }
     }
   };
+
   useEffect(() => {
     setDisplayVal(stack.join(''));
   }, [setDisplayVal, stack]);
+
   useEffect(() => () => {
     setToLS('history', history);
   });
@@ -82,6 +87,7 @@ export default function KeyPad({ setDisplayVal, setHistory, history, theme }) {
 }
 
 KeyPad.propTypes = types;
+
 KeyPad.defaultProps = {
   history: [],
 };

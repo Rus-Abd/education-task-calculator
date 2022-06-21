@@ -43,19 +43,19 @@ export default class KeypadCC extends Component {
     setDisplayVal({ displayVal: stack.join('') });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate({ history: prevHistory }, { stack: prevStack }) {
     const { stack } = this.state;
     const { setDisplayVal, history } = this.props;
-    if (prevState.stack !== stack) {
+    if (prevStack !== stack) {
       setDisplayVal({ displayVal: stack.join('') });
       setToLS('history', history);
     }
-    if (prevProps.history !== history) {
+    if (prevHistory !== history) {
       setToLS('history', history);
     }
   }
 
-  handleClick(e) {
+  handleClick = (e) => {
     const { stack } = this.state;
     const { setHistory, setDisplayVal, history } = this.props;
     const value = e.target.innerText;
@@ -86,7 +86,7 @@ export default class KeypadCC extends Component {
           }
       }
     }
-  }
+  };
 
   render() {
     const { theme } = this.props;
@@ -108,6 +108,7 @@ export default class KeypadCC extends Component {
 }
 
 KeypadCC.propTypes = types;
+
 KeypadCC.defaultProps = {
   history: [],
 };

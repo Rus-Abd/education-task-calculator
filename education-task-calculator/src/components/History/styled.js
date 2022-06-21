@@ -17,8 +17,7 @@ export const HistoryLogTitle = styled.span`
 `;
 export const HistoryLogValues = styled.ul`
   height: 500px;
-  overflow: ${(props) =>
-    props.length < 8 || props.showMore ? 'hidden' : 'scroll'};
+  overflow: ${(props) => (props.showFullHistory ? 'hidden' : 'scroll')};
   margin-left: 53px;
   margin-top: 50px;
   list-style: none;

@@ -2,15 +2,17 @@ import React, { useState, useContext } from 'react';
 import themeContext from '@utils/themeContext';
 import Display from '@components/Display/Display';
 import History from '@components/History/History';
-import KeyPad from '@components/Keypad/Keypad';
 import { getFromLS } from '@utils/storage';
 import './calculator.css';
 import SimpleKeypad from '@components/SimpleKeypad/SimpleKeypad';
 
 export default function Calculator() {
+  const DEFAULT_HISTORY = getFromLS('history') || [];
+
   const { theme } = useContext(themeContext);
+
   const [displayVal, setDisplayVal] = useState('');
-  const [history, setHistory] = useState(getFromLS('history') || []);
+  const [history, setHistory] = useState(DEFAULT_HISTORY);
 
   return (
     <main className="container">

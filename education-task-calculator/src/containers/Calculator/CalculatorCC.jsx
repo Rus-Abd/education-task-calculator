@@ -6,7 +6,6 @@ import './calculator.css';
 import DisplayCC from '@components/Display/DisplayCC';
 import KeypadCC from '@components/Keypad/KeypadCC';
 import HistoryCC from '@components/History/HistoryCC';
-import SimpleKeypad from '@components/SimpleKeypad/SimpleKeypad';
 
 export default class CalculatorCC extends Component {
   constructor(props) {
@@ -15,12 +14,16 @@ export default class CalculatorCC extends Component {
       displayVal: '',
       history: getFromLS('history') || [],
     };
-    this.update = this.update.bind(this);
+    // this.update = this.update.bind(this);
   }
 
-  update(nextState) {
+  // update(nextState) {
+  //   this.setState(nextState);
+  // }
+
+  handleUpdate = (nextState) => {
     this.setState(nextState);
-  }
+  };
 
   render() {
     const { theme } = this.context;
@@ -31,9 +34,8 @@ export default class CalculatorCC extends Component {
         <div className="container-calculations">
           <DisplayCC displayVal={displayVal} theme={theme} />
           <KeypadCC
-            setDisplayVal={this.update}
-            // this.setState(displayVal) this.setState(history)
-            setHistory={this.update}
+            setDisplayVal={this.handleUpdate}
+            setHistory={this.handleUpdate}
             history={history}
             theme={theme}
           />

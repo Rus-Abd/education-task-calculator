@@ -34,7 +34,6 @@ class Calculator {
     this.value = 0;
     this.secondvalue = 0;
     this.history.length = 0;
-    return this.value;
   }
 }
 

@@ -1,4 +1,6 @@
-.button-show {
+import styled from 'styled-components';
+
+const ShowMoreButton = styled.button`
   height: 50px;
   backface-visibility: hidden;
   background-color: #405cf5;
@@ -26,14 +28,12 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 100%;
-}
 
-.button-show:disabled {
-  cursor: default;
-}
+  &:focus {
+    box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+      rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
+      rgba(50, 151, 211, 0.3) 0 0 0 4px;
+  }
+`;
 
-.button-show:focus {
-  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
-    rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
-    rgba(50, 151, 211, 0.3) 0 0 0 4px;
-}
+export default ShowMoreButton;

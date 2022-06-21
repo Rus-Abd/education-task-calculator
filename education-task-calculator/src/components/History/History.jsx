@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './history.css';
 import { useTranslation } from 'react-i18next';
@@ -10,14 +10,15 @@ import {
   HistoryLogValues,
   HistoryLogItem,
 } from './styled';
+import ShowMore from '../ShowMore/ShowMore';
 
 export default function History({ history }) {
   const { t } = useTranslation();
+  const [showFullHistory, setShowFullHistory] = useState(history.length < 7);
 
-  const [showMore, setShowMore] = useState(history.length > 7);
-  // useEffect(() => setShowMore(history.length > 7), [history]);
   let itemList;
-  if (showMore) {
+
+  if (showFullHistory) {
     itemList = history.map((el, index) =>
       index < 7 ? (
         // eslint-disable-next-line react/no-array-index-key
@@ -35,23 +36,24 @@ export default function History({ history }) {
       <HistoryLine />
       <HistoryLog>
         <HistoryLogTitle>{t('history')}</HistoryLogTitle>
-        <HistoryLogValues length={history.length} showMore={showMore}>
+        <HistoryLogValues showFullHistory={showFullHistory}>
           {itemList}
-          {showMore && (
-            <span onClick={() => setShowMore(false)} className="button-show">
-              Show More
-            </span>
-          )}
+          <ShowMore
+            historyLength={history.length}
+            setShowFullHistory={setShowFullHistory}
+          />
         </HistoryLogValues>
       </HistoryLog>
     </Container>
   );
 }
+
 History.propTypes = {
   history: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   ),
 };
+
 History.defaultProps = {
   history: [],
 };

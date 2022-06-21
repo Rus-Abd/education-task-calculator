@@ -43,6 +43,14 @@ export default function SimpleKeypad({
     setToLS('history', history);
   }, [currentVal, setDisplayVal, history]);
 
+  useEffect(
+    () => () => {
+      setOperand(null);
+      calculator.reset();
+    },
+    [],
+  );
+
   return (
     <Container
       onClick={(e) =>
@@ -72,6 +80,7 @@ export default function SimpleKeypad({
 }
 
 SimpleKeypad.propTypes = types;
+
 SimpleKeypad.defaultProps = {
   history: [],
 };

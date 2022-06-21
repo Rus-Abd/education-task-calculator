@@ -14,19 +14,25 @@ import {
 
 class HistoryCC extends Component {
   constructor(props) {
+    const { history } = props;
+
     super(props);
-    const { history } = this.props;
+
     this.state = {
       showMore: history.length > 7,
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate({ history: prevHistory }) {
     const { history } = this.props;
-    if (prevProps.history !== history) {
+    if (prevHistory !== history) {
       this.setState({ showMore: history.length > 7 });
     }
   }
+
+  handleShow = () => {
+    this.setState({ showMore: false });
+  };
 
   render() {
     const { history, t } = this.props;
@@ -52,13 +58,11 @@ class HistoryCC extends Component {
         <HistoryLine />
         <HistoryLog>
           <HistoryLogTitle>{t('history')}</HistoryLogTitle>
-          <HistoryLogValues length={history.length} showMore={showMore}>
+          <HistoryLogValues length={history.length} showFullHistory={showMore}>
             {itemList}
             {showMore && (
-              <span
-                onClick={() => this.setState({ showMore: false })}
-                className="button-show">
-                Show More
+              <span onClick={this.handleShow} className="button-show">
+                {t('showMore')}
               </span>
             )}
           </HistoryLogValues>
@@ -67,12 +71,14 @@ class HistoryCC extends Component {
     );
   }
 }
+
 HistoryCC.propTypes = {
   history: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   ),
   t: PropTypes.func.isRequired,
 };
+
 HistoryCC.defaultProps = {
   history: [],
 };

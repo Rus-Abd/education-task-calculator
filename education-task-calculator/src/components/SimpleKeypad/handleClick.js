@@ -5,20 +5,25 @@ import {
   MultiplyCommand,
   DivideCommand,
   PercentCommand,
-} from '../../utils/simpleCalculate';
+} from '@utils/simpleCalculate';
 
 function operation(currOperation, val) {
   switch (currOperation) {
     case 'add':
       return new AddCommand(val);
+
     case 'subtract':
       return new SubtractCommand(val);
+
     case 'multiply':
       return new MultiplyCommand(val);
+
     case 'divide':
       return new DivideCommand(val);
+
     case 'percent':
       return new PercentCommand(val);
+
     default:
       break;
   }
@@ -27,14 +32,19 @@ function nameToSymbol(name) {
   switch (name) {
     case 'add':
       return '+';
+
     case 'subtract':
       return '-';
+
     case 'multiply':
       return '*';
+
     case 'divide':
       return '/';
+
     case 'percent':
       return '%';
+
     default:
       return 'Unknown';
   }
@@ -105,7 +115,8 @@ const handleClick = (
         break;
 
       case 'C':
-        setCurrentVal(calculator.reset());
+        calculator.reset();
+        setCurrentVal(calculator.value);
         setDisplayVal(calculator.value);
         break;
 
@@ -149,12 +160,15 @@ const handleClick = (
       default:
         if (operand === null && `${currentVal}${value}`.length < 13) {
           setCurrentVal(parseFloat(`${currentVal}${value}`));
+
           setDisplayVal(currentVal);
         } else if (`${currentVal}${value}`.length < 13) {
           calculator.secondvalue = parseFloat(
             `${calculator.secondvalue}${value}`,
           );
+
           setCurrentVal(calculator.secondvalue);
+
           setDisplayVal(calculator.secondvalue);
         }
     }
