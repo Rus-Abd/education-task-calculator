@@ -21,7 +21,7 @@ class HistoryCC extends Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     const { history } = this.props;
     if (prevProps.history !== history) {
       this.setState({ showMore: history.length > 7 });

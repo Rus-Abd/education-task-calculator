@@ -7,6 +7,12 @@
   font-size: 32px;
 }
 
+.active-link {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  color: springgreen;
+}
 .active {
   opacity: 1;
   text-decoration: underline;
