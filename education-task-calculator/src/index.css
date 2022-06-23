@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: normal normal normal;
+  font-family: HelveticaNeue;
+}
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 500;
+  src: local('HelveticaNeue'),
+    url(./assets/fonts/HelveticaNeue-CondensedRegular.ttf);
+}
+a {
+  text-decoration: none;
+}

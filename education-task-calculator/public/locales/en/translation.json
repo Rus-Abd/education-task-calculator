@@ -1,0 +1,15 @@
+{
+  "header": {
+    "title": "Calculator App",
+    "nav": ["Home", "Home(CC)", "Settings"]
+  },
+  "history": "History",
+  "showMore": "Show More",
+  "settings": {
+    "title": "Settings",
+    "label": "Change Theme",
+    "themes": ["Light", "Dark", "Colored"],
+    "eraseHistory": "Erase All History",
+    "changeLang": "Change Language"
+  }
+}
