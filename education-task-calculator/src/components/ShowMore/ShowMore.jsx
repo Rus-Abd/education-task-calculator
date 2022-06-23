@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import ShowMoreButton from './styled';
@@ -6,16 +6,18 @@ import ShowMoreButton from './styled';
 export default function ShowMore({ historyLength, setShowFullHistory }) {
   const { t } = useTranslation();
   const [showMore, setShowMore] = useState(true);
-  const handleClick = useCallback(() => {
+
+  const handleClick = () => () => {
     setShowMore(false);
-    setShowFullHistory(true);
-  });
+    setShowFullHistory(false);
+  };
 
   if (historyLength > 7 && showMore) {
     return (
-      <ShowMoreButton onClick={handleClick}>{t('showMore')}</ShowMoreButton>
+      <ShowMoreButton onClick={handleClick()}>{t('showMore')}</ShowMoreButton>
     );
   }
+
   return null;
 }
 ShowMore.propTypes = {

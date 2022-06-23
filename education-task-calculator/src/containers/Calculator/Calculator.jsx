@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
+
 import themeContext from '@utils/themeContext';
 import Display from '@components/Display/Display';
 import History from '@components/History/History';
 import { getFromLS } from '@utils/storage';
-import './calculator.css';
 import SimpleKeypad from '@components/SimpleKeypad/SimpleKeypad';
+
+import './calculator.css';
 
 export default function Calculator() {
   const DEFAULT_HISTORY = getFromLS('history') || [];

@@ -14,7 +14,7 @@ import ShowMore from '../ShowMore/ShowMore';
 
 export default function History({ history }) {
   const { t } = useTranslation();
-  const [showFullHistory, setShowFullHistory] = useState(history.length < 7);
+  const [showFullHistory, setShowFullHistory] = useState(history.length > 7);
 
   let itemList;
 

@@ -24,7 +24,7 @@ class Calculator {
   undo() {
     if (this.history.length > 0) {
       const command = this.history.pop();
-      this.value = command.undo(this.value);
+      this.value = fixedTothree(command.undo(this.value));
       return this.value;
     }
     return this.value;

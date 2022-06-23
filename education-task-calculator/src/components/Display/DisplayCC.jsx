@@ -5,6 +5,7 @@ import types from './types';
 export default class DisplayCC extends React.Component {
   render() {
     const { displayVal, theme } = this.props;
+
     return (
       <Container>
         <DisplayValue data-cy="displayValue">{displayVal}</DisplayValue>

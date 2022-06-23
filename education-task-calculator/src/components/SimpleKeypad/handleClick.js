@@ -160,7 +160,6 @@ const handleClick = (
       default:
         if (operand === null && `${currentVal}${value}`.length < 13) {
           setCurrentVal(parseFloat(`${currentVal}${value}`));
-
           setDisplayVal(currentVal);
         } else if (`${currentVal}${value}`.length < 13) {
           calculator.secondvalue = parseFloat(

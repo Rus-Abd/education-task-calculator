@@ -26,5 +26,24 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 'off',
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'external',
+          'builtin',
+          'internal',
+          'sibling',
+          'parent',
+          'index',
+        ],
+        pathGroups: [
+          {
+            pattern: '@*/**',
+            group: 'internal',
+          },
+        ],
+      },
+    ],
   },
 };

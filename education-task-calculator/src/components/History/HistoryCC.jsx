@@ -11,6 +11,7 @@ import {
   HistoryLogValues,
   HistoryLogItem,
 } from './styled';
+import ShowMoreCC from '../ShowMore/ShowMoreCC';
 
 class HistoryCC extends Component {
   constructor(props) {
@@ -19,27 +20,20 @@ class HistoryCC extends Component {
     super(props);
 
     this.state = {
-      showMore: history.length > 7,
+      showFullHistory: history.length > 7,
     };
   }
 
-  componentDidUpdate({ history: prevHistory }) {
-    const { history } = this.props;
-    if (prevHistory !== history) {
-      this.setState({ showMore: history.length > 7 });
-    }
-  }
-
-  handleShow = () => {
-    this.setState({ showMore: false });
+  handleUpdate = (nextState) => {
+    this.setState(nextState);
   };
 
   render() {
     const { history, t } = this.props;
-    const { showMore } = this.state;
+    const { showFullHistory } = this.state;
 
     let itemList;
-    if (showMore) {
+    if (showFullHistory) {
       itemList = history.map((el, index) =>
         index < 7 ? (
           // eslint-disable-next-line react/no-array-index-key
@@ -58,13 +52,12 @@ class HistoryCC extends Component {
         <HistoryLine />
         <HistoryLog>
           <HistoryLogTitle>{t('history')}</HistoryLogTitle>
-          <HistoryLogValues length={history.length} showFullHistory={showMore}>
+          <HistoryLogValues showFullHistory={showFullHistory}>
             {itemList}
-            {showMore && (
-              <span onClick={this.handleShow} className="button-show">
-                {t('showMore')}
-              </span>
-            )}
+            <ShowMoreCC
+              historyLength={history.length}
+              setShowFullHistory={this.handleUpdate}
+            />
           </HistoryLogValues>
         </HistoryLog>
       </Container>

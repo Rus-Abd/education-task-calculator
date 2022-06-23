@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import themeContext from '@utils/themeContext';
 
+import themeContext from '@utils/themeContext';
 import { getFromLS } from '@utils/storage';
-import './calculator.css';
 import DisplayCC from '@components/Display/DisplayCC';
 import KeypadCC from '@components/Keypad/KeypadCC';
 import HistoryCC from '@components/History/HistoryCC';
+
+import './calculator.css';
 
 export default class CalculatorCC extends Component {
   constructor(props) {
@@ -14,12 +15,7 @@ export default class CalculatorCC extends Component {
       displayVal: '',
       history: getFromLS('history') || [],
     };
-    // this.update = this.update.bind(this);
   }
-
-  // update(nextState) {
-  //   this.setState(nextState);
-  // }
 
   handleUpdate = (nextState) => {
     this.setState(nextState);
